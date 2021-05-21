@@ -1,6 +1,7 @@
 package com.magpegoraro.itau.case_jogo_da_velha.service;
 
 import com.magpegoraro.itau.case_jogo_da_velha.chain_of_responsibility.JogoVelhaMiddleware;
+import com.magpegoraro.itau.case_jogo_da_velha.exception.JogoInvalidoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class JogoVelhaService {
 
     public boolean isVelha(final List<String> jogo) {
         if(!isJogoValido(jogo))
-            throw new RuntimeException("O jogo é inválido.");
+            throw new JogoInvalidoException("O jogo é inválido.");
         final int[] jogoInt = converterArrayDeStringsParaArrayDeInteiros(jogo);
         return isVelha(jogoInt);
     }
