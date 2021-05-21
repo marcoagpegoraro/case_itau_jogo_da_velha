@@ -5,7 +5,9 @@ import lombok.*;
 import java.util.List;
 
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class JogoVelhaRequest {
     private List<String> jogo;
 }
