@@ -2,23 +2,36 @@ package com.magpegoraro.itau.case_jogo_da_velha.service;
 
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
+import com.magpegoraro.itau.case_jogo_da_velha.chain_of_responsibility.JogoVelhaMiddleware;
+import com.magpegoraro.itau.case_jogo_da_velha.exception.JogoInvalidoException;
 import com.magpegoraro.itau.case_jogo_da_velha.model.JogoVelhaRequest;
 import com.magpegoraro.itau.case_jogo_da_velha.template.JogoVelhaRequestTemplateLoader;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-@SpringBootTest
+@RunWith(MockitoJUnitRunner.class)
 public class JogoVelhaServiceTestLoader {
 
+    @InjectMocks
     @Autowired
     private JogoVelhaService jogoVelhaService;
 
-    JogoVelhaServiceTestLoader(){
+    @Mock
+    JogoVelhaMiddleware jogoVelhaMiddleware;
+
+    @Before
+    public void setup(){
         FixtureFactoryLoader.loadTemplates("com.magpegoraro.itau.case_jogo_da_velha");
+
     }
 
     @Test
@@ -100,5 +113,31 @@ public class JogoVelhaServiceTestLoader {
         //then
         Assert.assertFalse(isVelha);
     }
+
+    @Test(expected = JogoInvalidoException.class)
+    public void jogoInvalido4Linhas() {
+        // given
+        final List<String> lista = ((JogoVelhaRequest) Fixture.from(JogoVelhaRequest.class).gimme(JogoVelhaRequestTemplateLoader.JOGO_COM_4_LINHAS)).getJogo();
+        //when
+        jogoVelhaService.isVelha(lista);
+    }
+
+    @Test(expected = JogoInvalidoException.class)
+    public void jogoInvalido2Colunas() {
+        // given
+        final List<String> lista = ((JogoVelhaRequest) Fixture.from(JogoVelhaRequest.class).gimme(JogoVelhaRequestTemplateLoader.JOGO_COM_2_COLUNAS)).getJogo();
+        //when
+        jogoVelhaService.isVelha(lista);
+    }
+
+    @Test(expected = JogoInvalidoException.class)
+    public void jogoInvalidoLetraDiferente() {
+        // given
+        final List<String> lista = ((JogoVelhaRequest) Fixture.from(JogoVelhaRequest.class).gimme(JogoVelhaRequestTemplateLoader.JOGO_COM_UMA_LETRA_DIFERENTE)).getJogo();
+        //when
+        jogoVelhaService.isVelha(lista);
+    }
+
+
 
 }
