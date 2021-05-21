@@ -14,14 +14,13 @@ public class JogoVelhaService {
     @Autowired
     private JogoVelhaMiddleware middleware;
 
-    public boolean isVelha(final int[] jogo) {
+    private boolean isVelha(final int[] jogo) {
         return middleware.check(jogo);
     }
 
     public boolean isVelha(final List<String> jogo) {
-        if(isJogoValido(jogo)){
+        if(!isJogoValido(jogo))
             throw new RuntimeException("O jogo é inválido.");
-        }
         final int[] jogoInt = converterArrayDeStringsParaArrayDeInteiros(jogo);
         return isVelha(jogoInt);
     }

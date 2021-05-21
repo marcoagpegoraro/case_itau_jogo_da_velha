@@ -16,7 +16,7 @@ public class JogoVelhaMiddlewareBean {
                 .linkWith(new GanharSegundaColunaMiddleware())
                 .linkWith(new GanharTerceiraColunaMiddleware())
                 .linkWith(new GanharPrimeiraDiagonalMiddleware())
-                .linkWith(new GanharPrimeiraDiagonalMiddleware());
+                .linkWith(new GanharSegundaDiagonalMiddleware());
         return jogoVelhaMiddleware;
     }
 
