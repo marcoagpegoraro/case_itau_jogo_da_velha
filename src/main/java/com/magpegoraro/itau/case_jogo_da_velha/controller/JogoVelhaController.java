@@ -30,7 +30,7 @@ public class JogoVelhaController {
     @PostMapping(value = "/jogovelha")
     public ResponseEntity<JogoVelhaResponse> jogar(@RequestBody final JogoVelhaRequest jogoVelhaRequest){
         if(jogoVelhaService.isVelha(jogoVelhaRequest.getJogo())){
-           return ResponseEntity.badRequest().body(JogoVelhaResponse.builder().mensagem("Não tivemos um vencedor.").build());
+           return ResponseEntity.status(404).body(JogoVelhaResponse.builder().mensagem("Não tivemos um vencedor.").build());
         }
         return ResponseEntity.ok(JogoVelhaResponse.builder().mensagem("Tivemos um vencedor!").build());
     }

@@ -22,6 +22,8 @@ public class JogoVelhaRequestTemplateLoader implements TemplateLoader {
     public static final String JOGO_COM_2_COLUNAS = "JOGO_COM_UMA_LETRA_DIFERENTE";
     public static final String JOGO_COM_UMA_LETRA_DIFERENTE = "JOGO_COM_UMA_LETRA_DIFERENTE";
 
+    public static final String JOGO_SEM_VENCEDOR = "JOGO_SEM_VENCEDOR";
+
     @Override
     public void load() {
         Fixture.of(JogoVelhaRequest.class).addTemplate(GANHA_PRIMEIRA_LINHA, new Rule() {{
@@ -46,6 +48,8 @@ public class JogoVelhaRequestTemplateLoader implements TemplateLoader {
             add("jogo", Arrays.asList("XX", "XO", "OX"));
         }}).addTemplate(JOGO_COM_UMA_LETRA_DIFERENTE, new Rule() {{
             add("jogo", Arrays.asList("XXO", "XOO", "OXC"));
+        }}).addTemplate(JOGO_SEM_VENCEDOR, new Rule() {{
+            add("jogo", Arrays.asList("XOX", "XXO", "OXO"));
         }});
     }
 
