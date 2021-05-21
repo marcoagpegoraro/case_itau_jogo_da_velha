@@ -5,10 +5,7 @@ import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 import com.magpegoraro.itau.case_jogo_da_velha.model.JogoVelhaRequest;
 import com.magpegoraro.itau.case_jogo_da_velha.template.JogoVelhaRequestTemplateLoader;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
