@@ -1,0 +1,9 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image" : {
+    "Name": "marcoagp/jogo-da-velha-itau"
+  },
+  "Ports": [
+    {"ContainerPort" :  "8080"}
+  ]
+}

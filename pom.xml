@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.magpegoraro.itau</groupId>
 	<artifactId>case_jogo_da_velha</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>Case Jogo da Velha</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
